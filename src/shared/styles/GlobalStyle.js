@@ -1,12 +1,42 @@
 import { createGlobalStyle } from 'styled-components';
 
-import normalize from './normalize';
-import theme from './theme';
-
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Work+Sans:300|Montserrat:400,600');
 
-  ${normalize};
+  :root {
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'Montserrat', serif;
+
+    --font-size-small: 1.8rem;
+    --font-size-regular: 2.4rem;
+    --font-size-large: 3.0rem;
+    --font-size-larger: 3.6rem;
+    --font-size-xlarge: 4.8rem;
+     
+
+     --line-height-small: line-height: 30px;
+     --line-height-regular: line-height: 32px;
+     --line-height-large: line-height: 40px;
+     --line-height-larger: line-height: 48px;
+     --line-height-xlarge: line-height: 56px;
+
+    --color-white-regular: '#FFFFFF';
+    --color-white-dark: '#FFFFFF';
+
+    --color-black-regular: '#252525';
+    --color-black-light: '#564F62';
+    --color-black-lighter: '#ABA8AF';
+
+    --color-primary: '#c52233';
+    --color-secondary: '';
+    --color-tertiary: '';
+
+    --screen-xs: '575px';
+    --screen-sm: '767px';
+    --screen-md: '991px';
+    --screen-lg: '1199px';
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Work+Sans:300|Montserrat:400,600');
 
   * {
     box-sizing: border-box;
@@ -17,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: ${theme.font.secondary};
+    font-family: var(--font-secondary);
   }
 
   h1, h2, h3, p {
@@ -27,36 +57,45 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-family: ${theme.font.primary};
-    ${theme.fontSize.xlarge};
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xlarge);
+    line-height: var(--line-height-xlarge);
   }
 
   h2 {
-    font-family: ${theme.font.primary};
-    ${theme.fontSize.larger};
+    font-family: var(--font-primary);
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-large);
   }
 
   h3 {
-    ${theme.fontSize.large};
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-large);
   }
 
   p {
-    ${theme.fontSize.small};
-    color: ${theme.color.black.light};
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+    color: var(--color-black-light)
   }
 
-  @media (max-width: ${theme.screen.sm}) {
+  @media (max-width: var(--screen-sm)) {
     h1 {
-      ${theme.fontSize.larger};
+      font-size: var(--font-size-large);
+      line-height: var(--line-height-large);
     }
     h2 {
-      ${theme.fontSize.large};
+      font-size: var(--font-size-large);
+      line-height: var(--line-height-large);
     }
     h3 {
-      ${theme.fontSize.regular};
+      font-size: var(--font-size-regular);
+      line-height: var(--line-height-regular);
     }
     p {
-      ${theme.fontSize.small};
+      font-size: var(--font-size-small);
+      line-height: var(--line-height-small);
+
     }
   }
 
@@ -71,7 +110,7 @@ const GlobalStyle = createGlobalStyle`
   a {
     cursor: pointer;
     text-decoration: none;
-    color: ${theme.color.black.regular};
+    color: var(--color-black-regular);
     font-weight: 600;
 
     &:hover {
